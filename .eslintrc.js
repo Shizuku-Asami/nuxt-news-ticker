@@ -16,5 +16,6 @@ module.exports = {
     'vue',
   ],
   'rules': {
+    'new-cap': 0,
   },
 };

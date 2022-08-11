@@ -1,9 +1,9 @@
 <template>
-  <Tutorial />
+  <NewsTickerComponent />
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-}
+};
 </script>
