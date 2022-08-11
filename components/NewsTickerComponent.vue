@@ -1,8 +1,9 @@
+<!-- eslint-disable max-len -->
 <template>
   <div class="ticker-container" v-if="isVisible">
-    <div class="ticker-wrap">
-      <div class="ticker">
-        <div v-for="item in GET_ALL_NEWS" :key="item.link" class="ticker__item">
+    <div class="rtl-ticker-wrap">
+      <div class="rtl-ticker">
+        <div v-for="item in GET_ALL_NEWS" :key="item.link" class="rtl-ticker__item">
           <a :href="item.link">{{ item.title }}</a>
         </div>
       </div>
@@ -36,6 +37,33 @@
     transform: translate3d(-100%, 0, 0);
   }
 }
+
+@-webkit-keyframes rtl-ticker {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rtl-ticker {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .ticker-container {
   height: 4rem;
   line-height: 4rem;
@@ -72,6 +100,49 @@
     animation-timing-function: linear;
     -webkit-animation-name: ticker;
     animation-name: ticker;
+    -webkit-animation-duration: 120s;
+    animation-duration: 120s;
+
+    &:hover {
+      animation-play-state: paused;
+      -webkit-animation-play-state: paused;
+    }
+
+    &__item {
+      display: inline-block;
+
+      padding: 0 4rem;
+      font-size: 1rem;
+      color: white;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.rtl-ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  padding-left: 100%;
+  box-sizing: content-box;
+
+  .rtl-ticker {
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: rtl-ticker;
+    animation-name: rtl-ticker;
     -webkit-animation-duration: 120s;
     animation-duration: 120s;
 
